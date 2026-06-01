@@ -54,7 +54,11 @@ export const AdvBanner = () => {
           </button>
         </div>
         {ad.sponsored_by && (
-          <a href={ad.link} className="sponsoredBadge" target="_blank" title="Sponsored">
+          <a
+            href={`https://hackertab.dev/advertise`}
+            className="sponsoredBadge"
+            target="_blank"
+            title="Sponsored">
             {ad.sponsored_by}
           </a>
         )}
