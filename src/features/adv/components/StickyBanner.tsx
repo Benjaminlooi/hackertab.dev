@@ -38,13 +38,15 @@ export const StickyBanner = () => {
       cards: cards.map((card) => card.name),
       firstSeenDate,
       isConnected,
-      isSupported: user?.isSupporter || false,
+      isSupporter: user?.isSupporter || false,
       usageInDays: diffBetweenTwoDatesInDays(firstSeenDate, Date.now()),
     }
   }, [userSelectedTags, firstSeenDate, cards, user])
 
   const shouldShowAd =
-    ad && (!ad.condition || jsonPath.query([userAttributes], ad.condition)?.length > 0)
+    ad &&
+    !user?.isSupporter &&
+    (!ad.condition || jsonPath.query([userAttributes], ad.condition)?.length > 0)
 
   useEffect(() => {
     if (shouldShowAd) {
@@ -78,7 +80,11 @@ export const StickyBanner = () => {
       </button>
 
       {ad.sponsored_by && (
-        <a href={ad.link} className="sponsoredBadge" target="_blank" title="Sponsored">
+        <a
+          href={`https://hackertab.dev/advertise`}
+          className="sponsoredBadge"
+          target="_blank"
+          title="Sponsored">
           {ad.sponsored_by}
         </a>
       )}
