@@ -4,6 +4,7 @@
 .env*
 *.zip
 .todo
+.omo/
 # dependencies
 /node_modules
 /.pnp
